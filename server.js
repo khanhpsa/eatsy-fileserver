@@ -47,7 +47,7 @@ const upload = multer({ storage: storage });
 app.get("/Content/Media", (req, res) => {
   const imageUrl = req.query.url; // Get the image URL from the query parameter
   const filePath = path.join(__dirname, "Uploads", imageUrl);
-
+  console.log("filePath::", filePath);
   fs.access(filePath, fs.constants.F_OK, (err) => {
     if (err) {
       // File not found, send the default image instead

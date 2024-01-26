@@ -1,2 +1,8 @@
 2024-01-26 info: POST /api/upload/images null [14ms]
 2024-01-26 info: POST /api/upload/images null [11ms]
+2024-01-26 info: POST /api/upload/images null [7ms]
+2024-01-26 info: POST /api/upload/images null [14ms]
+2024-01-26 info: GET /Content/Media?url=/Test1/photos-1706234685266.png null [12ms]
+2024-01-26 info: GET /favicon.ico null [2ms]
+2024-01-26 info: GET /Content/Media?url=/Test1/photos-1706234685266.png null [5ms]
+2024-01-26 info: GET /favicon.ico null [1ms]
