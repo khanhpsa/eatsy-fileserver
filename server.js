@@ -58,6 +58,7 @@ app.get("/Content/Media", (req, res) => {
       const uppercasedImageUrl =
         imageUrl.charAt(0).toUpperCase() + imageUrl.slice(1);
       const filePathNew = path.join(__dirname, "Uploads", uppercasedImageUrl);
+      console.log("filePathNew::", filePathNew);
       fs.access(filePathNew, fs.constants.F_OK, (err) => {
         if (err) {
           // File not found, send the default image instead
