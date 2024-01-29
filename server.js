@@ -108,6 +108,7 @@ app.post("/api/upload/images", upload.array("photos", 10), function (req, res) {
       var subDirPath = "/" + subDir;
       var returnFile = {
         Path: subDirPath + "/" + file.filename,
+        FileName: file.filename,
         FullPath:
           baseUrl + "/Content/Media?url=" + subDirPath + "/" + file.filename,
       };
