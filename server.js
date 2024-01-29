@@ -25,7 +25,8 @@ app.use(requestLogger);
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    const uploadDir = "Uploads/" + (req?.body?.SubDir ?? "Default");
+    const uploadDir =
+      "Uploads/" + (req?.body?.SubDir ?? "Default").toLowerCase();
 
     // Check if the directory exists
     if (!fs.existsSync(uploadDir)) {
