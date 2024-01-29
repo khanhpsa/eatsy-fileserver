@@ -55,9 +55,23 @@ app.get("/Content/Media", (req, res) => {
 
   fs.access(filePath, fs.constants.F_OK, (err) => {
     if (err) {
-      // File not found, send the default image instead
-      const defaultImagePath = path.join(__dirname, "Uploads", "default.png");
-      res.sendFile(defaultImagePath);
+      const uppercasedImageUrl =
+        imageUrl.charAt(0).toUpperCase() + imageUrl.slice(1);
+      const filePathNew = path.join(__dirname, "Uploads", uppercasedImageUrl);
+      fs.access(filePathNew, fs.constants.F_OK, (err) => {
+        if (err) {
+          // File not found, send the default image instead
+          const defaultImagePath = path.join(
+            __dirname,
+            "Uploads",
+            "default.png"
+          );
+          res.sendFile(defaultImagePath);
+        } else {
+          // File found, send the requested image as the response
+          res.sendFile(filePathNew);
+        }
+      });
     } else {
       // File found, send the requested image as the response
       res.sendFile(filePath);
