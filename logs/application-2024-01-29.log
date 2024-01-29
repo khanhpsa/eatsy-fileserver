@@ -20,3 +20,7 @@
 2024-01-29 info: GET /favicon.ico null [2ms]
 2024-01-29 info: C:\Users\huyfa\OneDrive\Documents\Work\Eatsy\Back End\Migrate\eatsy-file\Uploads\food\eatsy-thit-de-nac.jpg
 2024-01-29 info: GET /Content/Media?url=food/eatsy-thit-de-nac.jpg null [3ms]
+2024-01-29 info: POST /api/upload/images null [12ms]
+2024-01-29 info: GET /Content/Media?url=/dish/29261826_414449599007284_5950396048638738432_n.jpg null [6ms]
+2024-01-29 info: GET /Content/Media?url=/food/eatsy-thit-de-nac.jpg null [13ms]
+2024-01-29 info: GET /Content/Media?url=/food/eatsy-thit-de-nac.jpg null [3ms]

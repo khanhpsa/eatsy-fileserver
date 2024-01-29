@@ -1,7 +1,7 @@
 # Dependencies
 node_modules
 Uploads
-
+logs
 # yarn error logs
 yarn-error.log
 
