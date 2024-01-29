@@ -47,7 +47,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.get("/Content/Media", (req, res) => {
-  const imageUrl = req.query.url; // Get the image URL from the query parameter
+  let imageUrl = req.query.url; // Get the image URL from the query parameter
   if (!path.extname(imageUrl)) {
     imageUrl += ".png"; // Add .png extension
   }
