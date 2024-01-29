@@ -5,7 +5,7 @@ import path from "path";
 import bodyParser from "body-parser";
 import multer from "multer";
 import fs from "fs";
-import { requestLogger } from "./app/utils/logger.js";
+import { logger, requestLogger } from "./app/utils/logger.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const EnumCommonCode = {
@@ -49,6 +49,7 @@ app.get("/Content/Media", (req, res) => {
   const imageUrl = req.query.url; // Get the image URL from the query parameter
   const filePath = path.join(__dirname, "Uploads", imageUrl);
   console.log("filePath::", filePath);
+  logger.info(filePath);
   fs.access(filePath, fs.constants.F_OK, (err) => {
     if (err) {
       // File not found, send the default image instead
