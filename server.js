@@ -55,8 +55,15 @@ app.get("/Content/Media", (req, res) => {
 
   fs.access(filePath, fs.constants.F_OK, (err) => {
     if (err) {
-      const uppercasedImageUrl =
-        imageUrl.charAt(0).toUpperCase() + imageUrl.slice(1);
+      function capitalizeAfterSlash(str) {
+        const parts = str.split("/");
+        if (parts.length > 1) {
+          parts[1] = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
+        }
+        return parts.join("/");
+      }
+
+      const uppercasedImageUrl = capitalizeAfterSlash(imageUrl);
       const filePathNew = path.join(__dirname, "Uploads", uppercasedImageUrl);
       console.log("filePathNew::", filePathNew);
       fs.access(filePathNew, fs.constants.F_OK, (err) => {
