@@ -48,6 +48,9 @@ const upload = multer({ storage: storage });
 
 app.get("/Content/Media", (req, res) => {
   const imageUrl = req.query.url; // Get the image URL from the query parameter
+  if (!path.extname(imageUrl)) {
+    imageUrl += ".png"; // Add .png extension
+  }
   const filePath = path.join(__dirname, "Uploads", imageUrl);
 
   fs.access(filePath, fs.constants.F_OK, (err) => {
