@@ -46,7 +46,12 @@ const storage = multer.diskStorage({
     // );
   },
 });
-const upload = multer({ storage: storage });
+const upload = multer({
+  storage: storage,
+  limits: {
+    fieldSize: 8 * 1024 * 1024,
+  },
+});
 
 app.get("/Content/Media", (req, res) => {
   let imageUrl = req.query.url; // Get the image URL from the query parameter
