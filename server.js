@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import multer from "multer";
 import fs from "fs";
 import { logger, requestLogger } from "./app/utils/logger.js";
+import { renameAndUpload } from "./app/dish.js";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const EnumCommonCode = {
@@ -16,7 +17,7 @@ const EnumCommonCode = {
 
 // Now you can use __dirname in your code
 console.log(__dirname);
-
+renameAndUpload();
 const app = express();
 const port = 3000;
 app.use(express.json()); // Middleware to parse JSON request bodies
@@ -94,7 +95,6 @@ app.post("/api/upload/images", upload.array("photos", 10), function (req, res) {
     returnModel.Code = EnumCommonCode.Error;
     return res.status(500).json(returnModel);
   }
-
   try {
     var subDir = "img";
 
@@ -103,6 +103,8 @@ app.post("/api/upload/images", upload.array("photos", 10), function (req, res) {
     }
 
     var baseUrl = req.protocol + "://" + req.get("host");
+
+    console.log("images_images");
 
     req.files.forEach(function (file) {
       var subDirPath = "/" + subDir;
@@ -119,6 +121,7 @@ app.post("/api/upload/images", upload.array("photos", 10), function (req, res) {
     returnModel.Code = EnumCommonCode.Success;
     returnModel.Data = uploadedList;
   } catch (ex) {
+    console.log("ex::", ex);
     var strError = "Failed for UPLOAD IMAGES: " + ex.message;
     returnModel.Code = EnumCommonCode.Error;
     returnModel.Msg = strError;
