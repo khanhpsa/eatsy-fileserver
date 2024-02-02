@@ -28,6 +28,7 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const uploadDir =
       "Uploads/" + (req?.body?.SubDir ?? "Default").toLowerCase();
+    console.log("uploadDir::" + uploadDir);
 
     // Check if the directory exists
     if (!fs.existsSync(uploadDir)) {
@@ -91,6 +92,8 @@ app.get("/Content/Media", (req, res) => {
 app.post("/api/upload/images", upload.array("photos", 10), function (req, res) {
   var uploadedList = [];
   var returnModel = {};
+  console.log("upload");
+
   if (req.files.length < 1) {
     returnModel.Code = EnumCommonCode.Error;
     return res.status(500).json(returnModel);
