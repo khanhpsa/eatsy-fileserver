@@ -21,7 +21,7 @@ console.log(__dirname);
 const app = express();
 const port = 3000;
 app.use(express.json()); // Middleware to parse JSON request bodies
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(requestLogger);
 
 const storage = multer.diskStorage({
