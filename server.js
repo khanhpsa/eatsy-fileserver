@@ -17,7 +17,7 @@ const EnumCommonCode = {
 
 // Now you can use __dirname in your code
 console.log(__dirname);
-renameAndUpload();
+// renameAndUpload();
 const app = express();
 const port = 3000;
 app.use(express.json()); // Middleware to parse JSON request bodies
