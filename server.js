@@ -61,6 +61,7 @@ app.get("/Content/Media", (req, res) => {
   const filePath = path.join(__dirname, "Uploads", imageUrl);
 
   fs.access(filePath, fs.constants.F_OK, (err) => {
+    console.log("err::", err);
     if (err) {
       function capitalizeAfterSlash(str) {
         const parts = str.split("/");
@@ -76,6 +77,7 @@ app.get("/Content/Media", (req, res) => {
       fs.access(filePathNew, fs.constants.F_OK, (err) => {
         if (err) {
           // File not found, send the default image instead
+          console.log("err_1::", err);
           const defaultImagePath = path.join(
             __dirname,
             "Uploads",
